@@ -1,0 +1,1009 @@
+{
+	"info": {
+		"_postman_id": "181a44d8-569e-44fe-bed1-b9e53a202982",
+		"name": "MyTubeAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Video",
+			"item": [
+				{
+					"name": "GetAllVideos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllPublicVideos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/public",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"public"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVideoById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVideosByOwnerAndSort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/by_owner_and_sort/123/most_viewed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"by_owner_and_sort",
+								"123",
+								"most_viewed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVideosPublicByOwnerAndSort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/by_owner_public_and_sort/123/most_viewed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"by_owner_public_and_sort",
+								"123",
+								"most_viewed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVideosLikedByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/liked_by_user_all/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"liked_by_user_all",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetVideosPublicLikedByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/liked_by_user_public/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"liked_by_user_public",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchAndSort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/search/war/most_viewed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"search",
+								"war",
+								"most_viewed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchPublicAndSort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/search_public/war/most_viewed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"search_public",
+								"war",
+								"most_viewed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateVideo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"VideoUrl\":\"https://www.youtube.com/embed/3ykdb8Zen-o\",\n\t\"ThumbnailUrl\":\"https://img.youtube.com/vi/3ykdb8Zen-o/0.jpg\",\n\t\"VideoName\":\"Charlie Chaplin On Cocaine - \\\"ModernTimes\\\"﻿ 1936\",\n\t\"VideoDescription\":\"123\",\n\t\"VideoType\":\"0\",\n\t\"CommentsEnabled\":\"true\",\n\t\"RatingEnabled\":\"true\",\n\t\"VideoOwner\":\"1234\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateVideo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"VideoName\": \"Charlie Chaplin On Cocainee - \\\"ModernTimes\\\"\\ufeff 1936\",\n    \"VideoDescription\": \"NEW DESCRIPTION\",\n    \"VideoType\": 1,\n    \"CommentsEnabled\": false,\n    \"RatingEnabled\": false,\n    \"ThumbnailUrl\" : \"https://img.youtube.com/vi/3ykdb8Zen-o/0.jpg\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/update/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteVideo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"VideoName\": \"Charlie Chaplin On Cocainee - \\\"ModernTimes\\\"\\ufeff 1936\",\n    \"VideoDescription\": \"12344\",\n    \"VideoType\": 1,\n    \"CommentsEnabled\": true,\n    \"RatingEnabled\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/videos/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"videos",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CommentText\": \"WOW WOW WOW\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByUsername",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CommentText\": \"WOW WOW WOW\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMostSubbedUsersForIndexPage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/users/index",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchAndSort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/users/search_sort/123/username_desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"search_sort",
+								"123",
+								"username_desc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UsersSubbedTo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/users/users_subbed_to/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"users_subbed_to",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UsersSubscribedBy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/users/subscriptions_by/1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"subscriptions_by",
+								"1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\":\"1234\",\n\t\"Pass\":\"123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\": \"12345\",\n    \"Pass\": \"123\",\n    \"Firstname\": \"Jovan\",\n    \"Lastname\": \"Jovic\",\n    \"Email\": \"jovan@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEditUserModelForEdit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/users/update/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"update",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Username\": \"123\",\n    \"Firstname\": \"Marko123\",\n    \"Lastname\": \"Markovic123\",\n    \"UserType\": 0,\n    \"Email\": \"marko@gmail.com\",\n    \"UserDescription\": null\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/update/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"update",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BlockUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CommentText\": \"WOW WOW WOW\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/block/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"block",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UnblockUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CommentText\": \"WOW WOW WOW\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/unblock/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"unblock",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CommentText\": \"WOW WOW WOW\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/users/delete/123123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"users",
+								"delete",
+								"123123"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "GetAndSortAllCommentsForVideo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/comments/for_video/1/latest",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comments",
+								"for_video",
+								"1",
+								"latest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCommentById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"VideoID\": 1,\n    \"CommentOwner\": \"123\",\n    \"CommentText\": \"LOOOOOOOOL\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/comments/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comments",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateComment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CommentText\": \"WOW WOW WOW\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/comments/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comments",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteComment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/comments/delete/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comments",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscribers",
+			"item": [
+				{
+					"name": "CheckIfSubbed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/subscribers/check_if_sub/1234/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"subscribers",
+								"check_if_sub",
+								"1234",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sub",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/subscribers/sub/123/1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"subscribers",
+								"sub",
+								"123",
+								"1234"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VideoRating",
+			"item": [
+				{
+					"name": "GetRatingIfExistsByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/video_rating/1/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"video_rating",
+								"1",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateRating",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"VideoId\":1,\n\t\"LikeOwner\":\"123\",\n\t\"IsLike\":false\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/video_rating/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"video_rating",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CommentRating",
+			"item": [
+				{
+					"name": "GetRatingIfExists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/comment_rating/1/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comment_rating",
+								"1",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRatingsOnVideoByUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:44087/api/comment_rating/for_video/1/123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comment_rating",
+								"for_video",
+								"1",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateRating",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"CommentId\":1,\n\t\"LikeOwner\":\"123\",\n\t\"IsLike\":true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:44087/api/comment_rating/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44087",
+							"path": [
+								"api",
+								"comment_rating",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
