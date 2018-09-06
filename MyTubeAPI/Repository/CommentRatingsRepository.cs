@@ -44,7 +44,7 @@ namespace MyTube.Repository
             var usernameParam = String.Format("'{0}'", username);
             var queryString = String.Format("SELECT CR.* FROM CommentRatings AS CR INNER JOIN Comments as C ON CR.CommentId = C.CommentID INNER JOIN Videos AS V ON C.VideoID = V.VideoId" +
                                                 " WHERE V.Deleted = 0 AND C.Deleted = 0 AND CR.Deleted = 0 AND V.VideoID = {0} AND CR.LikeOwner = {1}", idParam, usernameParam);
-            return db.CommentRatings.SqlQuery(queryString).ToList();
+            return db.Database.SqlQuery<CommentRating>(queryString).ToList();
         }
 
         public bool RatingExistsForComment(long commentId, string username)

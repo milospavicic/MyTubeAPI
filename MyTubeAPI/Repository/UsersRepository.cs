@@ -17,13 +17,13 @@ namespace MyTube.Repository
         public IEnumerable<User> GetAllUsers()
         {
             var queryString = "SELECT * FROM Users WHERE Deleted = 0";
-            return db.Users.SqlQuery(queryString);
+            return db.Database.SqlQuery<User>(queryString);
         }
 
         public IEnumerable<User> GetNTopSubbedUsers(int n)
         {
             var sqlString = String.Format("SELECT TOP {0} * FROM Users WHERE Deleted = 0 ORDER BY SubscribersCount DESC", n);
-            return db.Users.SqlQuery(sqlString).ToList();
+            return db.Database.SqlQuery<User>(sqlString).ToList();
         }
 
         public bool Login(User user)
@@ -44,20 +44,20 @@ namespace MyTube.Repository
         {
             var usernameParam = String.Format("'{0}'", username);
             var queryString = String.Format("SELECT U.* FROM Users AS U INNER JOIN Subscribers AS S ON U.Username = S.ChannelSubscribedUsername WHERE S.SubscriberUsername = {0}", usernameParam);
-            return db.Users.SqlQuery(queryString).ToList();
+            return db.Database.SqlQuery<User>(queryString).ToList();
         }
 
         public IEnumerable<User> GetUsersSubscribedTo(string username)
         {
             var usernameParam = String.Format("'{0}'", username);
             var queryString = String.Format("SELECT U.* FROM Users AS U INNER JOIN Subscribers AS S ON U.Username = S.SubscriberUsername WHERE S.ChannelSubscribedUsername = {0}", usernameParam);
-            return db.Users.SqlQuery(queryString).ToList();
+            return db.Database.SqlQuery<User>(queryString).ToList();
         }
         public IEnumerable<User> SearchAndSortUsers(string searchString, string sortOrder)
         {
             var searchParam = String.Format("'%{0}%'", searchString);
             var queryString = String.Format("SELECT * FROM Users WHERE Deleted = 0 AND ( Username LIKE {0} OR Firstname LIKE {0} OR Lastname LIKE {0} OR Email LIKE {0} ) {1}", searchParam, SortUsersString(sortOrder));
-            return db.Users.SqlQuery(queryString).ToList();
+            return db.Database.SqlQuery<User>(queryString).ToList();
         }
         public string SortUsersString(string sortOrder)
         {

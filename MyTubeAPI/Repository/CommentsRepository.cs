@@ -22,7 +22,7 @@ namespace MyTube.Repository
             try
             {
                 var sqlString = String.Format("SELECT * FROM Comments WHERE VideoId = '{0}' AND Deleted = 0 {1}", id, SortCommentsString(orderBy));
-                return db.Comments.SqlQuery(sqlString).ToList();
+                return db.Database.SqlQuery<Comment>(sqlString).ToList();
             }
             catch
             {

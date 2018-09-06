@@ -16,32 +16,35 @@ namespace MyTube.Repository
         {
             this.db = db;
         }
+
         public IEnumerable<Video> GetNRandomVideos(int n)
         {
             var sqlString = String.Format("SELECT TOP {0} V.* FROM Videos AS V INNER JOIN Users AS U ON V.VideoOwner = U.Username " +
                                             " WHERE V.Deleted = 0 AND U.Deleted = 0" +
                                             " ORDER BY NEWID()", n);
-            return db.Videos.SqlQuery(sqlString).ToList();
+            return db.Database.SqlQuery<Video>(sqlString).ToList();
         }
+
         public IEnumerable<Video> GetNRandomPublicVideos(int n)
         {
             var sqlString = String.Format("SELECT TOP {0} V.* FROM Videos AS V INNER JOIN Users AS U ON V.VideoOwner = U.Username " +
                                             " WHERE V.Deleted = 0 AND U.Deleted = 0 AND V.Blocked = 0 AND U.Blocked = 0 AND V.VideoType = 0 " +
                                             " ORDER BY NEWID()", n);
-            return db.Videos.SqlQuery(sqlString).ToList();
+            return db.Database.SqlQuery<Video>(sqlString).ToList();
         }
+
         public IEnumerable<Video> GetVideosAll()
         {
             var sqlString = String.Format("SELECT V.* FROM Videos AS V INNER JOIN Users AS U ON V.VideoOwner = U.Username " +
                                 " WHERE V.Deleted = 0 AND U.Deleted = 0");
-            return db.Videos.SqlQuery(sqlString).ToList();
+            return db.Database.SqlQuery<Video>(sqlString).ToList();
         }
 
         public IEnumerable<Video> GetVideosPublic()
         {
             var sqlString = String.Format("SELECT V.* FROM Videos AS V INNER JOIN Users AS U ON V.VideoOwner = U.Username " +
                     " WHERE V.Deleted = 0 AND U.Deleted = 0 AND V.Blocked = 0 AND U.Blocked = 0 AND V.VideoType = 0 ");
-            return db.Videos.SqlQuery(sqlString).ToList();
+            return db.Database.SqlQuery<Video>(sqlString).ToList();
         }
 
         public IEnumerable<Video> GetVideosAllSearchAndSort(string searchString, string orderBy)
@@ -50,7 +53,7 @@ namespace MyTube.Repository
             {
                 var searchParam = String.Format("'%{0}%'", searchString);
                 var sqlString = String.Format("SELECT * FROM Videos WHERE Deleted = 0 AND ( VideoName LIKE {0} OR VideoDescription LIKE {0} OR VideoOwner LIKE {0} ) {1}", searchParam, VideosSortString(orderBy));
-                return db.Videos.SqlQuery(sqlString).ToList();
+                return db.Database.SqlQuery<Video>(sqlString).ToList();
             }
             catch
             {
@@ -63,7 +66,7 @@ namespace MyTube.Repository
             {
                 var searchParam = String.Format("'%{0}%'", searchString);
                 var sqlString = String.Format("SELECT * FROM Videos WHERE Deleted = 0 AND VideoType = {1} AND ( VideoName LIKE {0} OR VideoDescription LIKE {0} OR VideoOwner LIKE {0} ) {2}", searchParam, (int)PUBLIC_VIDEO, VideosSortString(orderBy));
-                return db.Videos.SqlQuery(sqlString).ToList();
+                return db.Database.SqlQuery<Video>(sqlString).ToList();
             }
             catch
             {
@@ -75,7 +78,7 @@ namespace MyTube.Repository
             try
             {
                 var sqlString = String.Format("SELECT * FROM Videos WHERE VideoOwner = '{0}' AND Deleted = 0 {1}", username, VideosSortString(orderBy));
-                return db.Videos.SqlQuery(sqlString).ToList();
+                return db.Database.SqlQuery<Video>(sqlString).ToList();
             }
             catch
             {
@@ -88,7 +91,7 @@ namespace MyTube.Repository
             try
             {
                 var sqlString = String.Format("SELECT * FROM Videos WHERE VideoOwner = '{0}' AND Deleted = 0 AND VideoType = {1} {2}", username, (int)PUBLIC_VIDEO, VideosSortString(orderBy));
-                return db.Videos.SqlQuery(sqlString).ToList();
+                return db.Database.SqlQuery<Video>(sqlString).ToList();
             }
             catch
             {
@@ -117,7 +120,7 @@ namespace MyTube.Repository
             var usernameParam = String.Format("'{0}'", username);
             var sqlString = String.Format("SELECT V.* FROM Videos AS V INNER JOIN Users AS U ON V.VideoOwner = U.Username INNER JOIN VideoRatings AS VR ON V.VideoID = VR.VideoID " +
                                             " WHERE V.Deleted = 0 AND VR.Deleted = 0 AND U.Deleted = 0 AND VR.LikeOwner = {0}", usernameParam);
-            return db.Videos.SqlQuery(sqlString).ToList();
+            return db.Database.SqlQuery<Video>(sqlString).ToList();
         }
 
         public IEnumerable<Video> GetVideosPublicLikedByUser(string username)
@@ -125,7 +128,7 @@ namespace MyTube.Repository
             var usernameParam = String.Format("'{0}'", username);
             var sqlString = String.Format("SELECT V.* FROM Videos AS V INNER JOIN Users AS U ON V.VideoOwner = U.Username INNER JOIN VideoRatings AS VR ON V.VideoID = VR.VideoID " +
                                             " WHERE V.Deleted = 0 AND VR.Deleted = 0 AND U.Deleted = 0 AND V.Blocked = 0 AND U.Blocked = 0 AND V.VideoType = 0 AND VR.LikeOwner = {0}", usernameParam);
-            return db.Videos.SqlQuery(sqlString).ToList();
+            return db.Database.SqlQuery<Video>(sqlString).ToList();
         }
 
         public Video GetVideoById(long? id)
