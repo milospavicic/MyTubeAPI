@@ -75,18 +75,11 @@ namespace MyTube.DTO
             newVDTO.ViewsCount = video.ViewsCount;
             newVDTO.DatePostedString = video.DatePostedString;
             newVDTO.VideoOwner = video.VideoOwner;
-            if (video.User == null && video.VideoOwner != null)
+
+            using (var userRepo = new UsersRepository(new MyDBContext()))
             {
-                User user = null;
-                using (var userRepo = new UsersRepository(new MyDBContext()))
-                {
-                    user = userRepo.GetUserByUsername(video.VideoOwner);
-                    newVDTO.VideoOwnerDTO = UserDTO.ConvertUserToDTO(user);
-                }
-            }
-            else
-            {
-                newVDTO.VideoOwnerDTO = UserDTO.ConvertUserToDTO(video.User);
+                User user = userRepo.GetUserByUsername(video.VideoOwner);
+                newVDTO.VideoOwnerDTO = UserDTO.ConvertUserToDTO(user);
             }
 
             return newVDTO;

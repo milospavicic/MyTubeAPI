@@ -38,6 +38,7 @@ namespace TestProject.Models
         [Display(Name = "Picture Url")]
         public string ProfilePictureUrl { get; set; }
         public long SubscribersCount { get; set; }
+        public long VideosCount { get; set; }
         public string RegistrationDateString { get { return RegistrationDate.ToShortDateString(); } }
 
         public virtual ICollection<CommentRating> CommentRatings { get; set; }

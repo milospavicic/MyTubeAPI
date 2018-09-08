@@ -59,6 +59,7 @@ namespace MyTubeAPI.Migrations
                         Deleted = c.Boolean(nullable: false),
                         ProfilePictureUrl = c.String(),
                         SubscribersCount = c.Long(nullable: false),
+                        VideosCount = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Username);
             

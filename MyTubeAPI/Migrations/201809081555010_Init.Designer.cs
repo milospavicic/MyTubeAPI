@@ -13,7 +13,7 @@ namespace MyTubeAPI.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809011702372_Init"; }
+            get { return "201809081555010_Init"; }
         }
         
         string IMigrationMetadata.Source

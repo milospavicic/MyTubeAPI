@@ -16,7 +16,7 @@ namespace MyTubeAPI.Migrations
             var ProfilePicture = "http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png";
 
             context.Users.AddOrUpdate(p => p.Username,
-                new User() { Username = "123", Pass = "123", Firstname = "Marko", Lastname = "Markovic", UserType = UserType.USER, Email = "marko@gmail.com", UserDescription = null, RegistrationDate = DateTime.Now, Blocked = false, Deleted = false, ProfilePictureUrl = ProfilePicture, SubscribersCount = 1 },
+                new User() { Username = "123", Pass = "123", Firstname = "Marko", Lastname = "Markovic", UserType = UserType.USER, Email = "marko@gmail.com", UserDescription = null, RegistrationDate = DateTime.Now, Blocked = false, Deleted = false, ProfilePictureUrl = ProfilePicture, SubscribersCount = 1, VideosCount = 3 },
                 new User() { Username = "1234", Pass = "123", Firstname = "Pera", Lastname = "Peric", UserType = UserType.ADMIN, Email = "pera@gmail.com", UserDescription = null, RegistrationDate = DateTime.Now, Blocked = false, Deleted = false, ProfilePictureUrl = ProfilePicture, SubscribersCount = 0 }
                 );
             context.SaveChanges();

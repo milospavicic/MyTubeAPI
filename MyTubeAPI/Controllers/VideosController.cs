@@ -160,6 +160,12 @@ namespace MyTubeAPI.Controllers
                 video.ThumbnailUrl = BASIC_PICTURE;
             }
             videosRepo.InsertVideo(video);
+            using (var userRepo = new UsersRepository(new MyDBContext()))
+            {
+                User user = userRepo.GetUserByUsername(video.VideoOwner);
+                user.VideosCount += 1;
+                userRepo.UpdateUser(user);
+            }
             var videoDTO = VideoDTO.ConvertVideoToDTO(video);
             return Request.CreateResponse(HttpStatusCode.Created, videoDTO, Configuration.Formatters.JsonFormatter);
         }
@@ -251,6 +257,12 @@ namespace MyTubeAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             videosRepo.DeleteVideo(id);
+            using (var userRepo = new UsersRepository(new MyDBContext()))
+            {
+                User user = userRepo.GetUserByUsername(videoForDel.VideoOwner);
+                user.VideosCount -= 1;
+                userRepo.UpdateUser(user);
+            }
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

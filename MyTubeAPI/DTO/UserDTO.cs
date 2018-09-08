@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using TestProject.Models;
 
 namespace MyTube.DTO
@@ -61,8 +60,8 @@ namespace MyTube.DTO
             newUDTO.Blocked = user.Blocked;
             newUDTO.Deleted = user.Deleted;
             newUDTO.ProfilePictureUrl = user.ProfilePictureUrl;
-            newUDTO.SubscribersCount = user.Subscribers == null ? 0 : user.Subscribers.Count();
-            newUDTO.VideosCount = user.Videos == null ? 0 : user.Videos.Count();
+            newUDTO.SubscribersCount = user.SubscribersCount;
+            newUDTO.VideosCount = user.VideosCount;
 
             return newUDTO;
         }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using MyTube.Repository;
+using MyTubeAPI.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TestProject.Models;
 
@@ -15,22 +17,27 @@ namespace MyTube.DTO
         public long LikesCount { get; set; }
         public long DislikesCount { get; set; }
         public bool Deleted { get; set; }
+        public UserDTO CommentOwnerDTO { get; set; }
 
         public string DatePostedString { get { return DatePosted.ToShortDateString(); } }
 
         public static CommentDTO ConvertCommentToDTO(Comment comment)
         {
-            CommentDTO newCDTO = new CommentDTO
+            CommentDTO newCDTO = new CommentDTO();
+            newCDTO.CommentID = comment.CommentID;
+            newCDTO.VideoID = comment.VideoID;
+            newCDTO.CommentOwner = comment.CommentOwner;
+            newCDTO.CommentText = comment.CommentText;
+            newCDTO.DatePosted = comment.DatePosted;
+            newCDTO.LikesCount = comment.LikesCount;
+            newCDTO.DislikesCount = comment.DislikesCount;
+            newCDTO.Deleted = comment.Deleted;
+            using (var userRepo = new UsersRepository(new MyDBContext()))
             {
-                CommentID = comment.CommentID,
-                VideoID = comment.VideoID,
-                CommentOwner = comment.CommentOwner,
-                CommentText = comment.CommentText,
-                DatePosted = comment.DatePosted,
-                LikesCount = comment.LikesCount,
-                DislikesCount = comment.DislikesCount,
-                Deleted = comment.Deleted
-            };
+                User user = userRepo.GetUserByUsername(comment.CommentOwner);
+                newCDTO.CommentOwnerDTO = UserDTO.ConvertUserToDTO(user);
+            }
+
             return newCDTO;
         }
         public static IEnumerable<CommentDTO> ConvertCollectionCommentToDTO(IEnumerable<Comment> comments)
