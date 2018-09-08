@@ -105,7 +105,8 @@ namespace MyTubeAPI.Controllers
             {
                 commentRatingsRepository.UpdateCommentRating(cr);
             }
-            return Request.CreateResponse(HttpStatusCode.OK, returnMessage, Configuration.Formatters.JsonFormatter);
+            var returnData = new { returnMessage, comment.LikesCount, comment.DislikesCount };
+            return Request.CreateResponse(HttpStatusCode.OK, returnData, Configuration.Formatters.JsonFormatter);
 
         }
 
@@ -125,7 +126,8 @@ namespace MyTubeAPI.Controllers
             commentsRepo.UpdateComment(comment);
 
             string returnMessage = (cr.IsLike == true) ? "like" : "dislike";
-            return Request.CreateResponse(HttpStatusCode.OK, returnMessage, Configuration.Formatters.JsonFormatter);
+            var returnData = new { returnMessage, comment.LikesCount, comment.DislikesCount };
+            return Request.CreateResponse(HttpStatusCode.OK, returnData, Configuration.Formatters.JsonFormatter);
         }
     }
 }

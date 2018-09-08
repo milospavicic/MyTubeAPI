@@ -89,8 +89,8 @@ namespace MyTubeAPI.Controllers
             {
                 videoRatingRepo.UpdateVideoRating(vr);
             }
-
-            return Request.CreateResponse(HttpStatusCode.OK, returnMessage, Configuration.Formatters.JsonFormatter);
+            var returnData = new { returnMessage, video.LikesCount, video.DislikesCount };
+            return Request.CreateResponse(HttpStatusCode.OK, returnData, Configuration.Formatters.JsonFormatter);
 
         }
 
@@ -111,6 +111,7 @@ namespace MyTubeAPI.Controllers
 
             string returnMessage = (vr.IsLike == true) ? "like" : "dislike";
 
+            var returnData = new { returnMessage, video.LikesCount, video.DislikesCount };
             return Request.CreateResponse(HttpStatusCode.OK, returnMessage, Configuration.Formatters.JsonFormatter);
         }
     }
